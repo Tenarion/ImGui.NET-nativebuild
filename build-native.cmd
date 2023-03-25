@@ -1,8 +1,8 @@
 @setlocal
 @echo off
 
-set CIMGUI_ROOT=%~dp0cimgui
-set BUILD_CONFIG=Debug
+set SCRIPT_PATH=%~dp0
+set BUILD_CONFIG=Release
 set BUILD_ARCH=x64
 set BUILD_CMAKE_GENERATOR_PLATFORM=x64
 
@@ -16,7 +16,7 @@ shift
 goto ArgLoop
 
 :Build
-pushd %CIMGUI_ROOT%
+pushd %SCRIPT_PATH%
 
 If NOT exist ".\build\%BUILD_ARCH%" (
   mkdir build\%BUILD_ARCH%
