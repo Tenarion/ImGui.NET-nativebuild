@@ -42,7 +42,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: build native libraries
         run:
-          ${{env.GITHUB_WORKSPACE}}/ci-build.bat
+          dir
           
   build-macos:
       # The type of runner that the job will run on
