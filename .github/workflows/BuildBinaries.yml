@@ -75,6 +75,6 @@ jobs:
         
         - uses: actions/upload-artifact@v3
           with:
-            name: upload linux files
+            name: upload macos files
             path: |
               build/Release/
