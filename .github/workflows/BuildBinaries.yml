@@ -30,7 +30,13 @@ jobs:
         run: |
           git submodule update --init --recursive
           ./ci-build.sh
-          
+      - uses: actions/upload-artifact@v3
+        with:
+          name: upload linux files
+          path: |
+            build/x86/Release/
+            build/x64/Release/ 
+            
   build-windows:
     # The type of runner that the job will run on
     runs-on: windows-latest
@@ -45,6 +51,13 @@ jobs:
         run: |
           git submodule update --init --recursive
           ./ci-build.cmd
+        
+      - uses: actions/upload-artifact@v3
+        with:
+          name: upload windows files
+          path: |
+            build/x86/Release/
+            build/x64/Release/
           
   build-macos:
       # The type of runner that the job will run on
@@ -60,3 +73,10 @@ jobs:
           run: |
             git submodule update --init --recursive
             ./ci-build.sh
+        
+        - uses: actions/upload-artifact@v3
+          with:
+            name: upload linux files
+            path: |
+              build/x86/Release/
+              build/x64/Release/ 
