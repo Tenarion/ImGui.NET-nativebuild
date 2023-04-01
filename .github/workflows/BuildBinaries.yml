@@ -44,7 +44,7 @@ jobs:
       - name: build native libraries
         run: |
           git submodule update --init --recursive
-          ./ci-build.bat
+          ./ci-build.cmd
           
   build-macos:
       # The type of runner that the job will run on
