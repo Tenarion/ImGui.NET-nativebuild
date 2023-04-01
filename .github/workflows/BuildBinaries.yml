@@ -34,8 +34,7 @@ jobs:
         with:
           name: upload linux files
           path: |
-            build/x86/Release/
-            build/x64/Release/ 
+            build/Release/
             
   build-windows:
     # The type of runner that the job will run on
@@ -78,5 +77,4 @@ jobs:
           with:
             name: upload linux files
             path: |
-              build/x86/Release/
-              build/x64/Release/ 
+              build/Release/
