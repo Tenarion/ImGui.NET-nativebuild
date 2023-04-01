@@ -34,7 +34,7 @@ jobs:
         with:
           name: upload linux files
           path: |
-            build/Release/
+            build/Release/*.so
             
   build-windows:
     # The type of runner that the job will run on
@@ -55,8 +55,8 @@ jobs:
         with:
           name: upload windows files
           path: |
-            build/x86/Release/
-            build/x64/Release/
+            build/x86/Release/*.dll
+            build/x64/Release/*.dll
           
   build-macos:
       # The type of runner that the job will run on
@@ -77,4 +77,4 @@ jobs:
           with:
             name: upload macos files
             path: |
-              build/Release/
+              build/Release/*.dylib
