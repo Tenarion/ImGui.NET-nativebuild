@@ -1,7 +1,7 @@
 @setlocal
 @echo off
 
-set SCRIPT_PATH=%~dp0cimgui
+set SCRIPT_PATH=%~dp0
 set BUILD_CONFIG=Release
 set BUILD_ARCH=x64
 set BUILD_CMAKE_GENERATOR_PLATFORM=x64
@@ -31,4 +31,3 @@ popd
 
 :Success
 exit /b 0
-
