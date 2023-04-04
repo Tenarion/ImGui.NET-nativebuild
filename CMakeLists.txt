@@ -1,16 +1,17 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.1)
 Project(cimgui)
-if(WIN32) #to mingw work as all the others
-set(CMAKE_SHARED_LIBRARY_PREFIX "")
-endif(WIN32)
+
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 #general settings
 include_directories(cimgui/imgui)
 include_directories(cimplot/implot)
 include_directories(cimguizmo/ImGuizmo)
 include_directories(cimnodes/imnodes)
-add_definitions("-DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=1")
-
-add_compile_definitions("IMGUI_DEFINE_MATH_OPERATORS=1")
+#add_definitions("-DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=1")
+target_compile_definitions(cimgui PUBLIC IMGUI_DISABLE_OBSOLETE_FUNCTIONS=1)
+#add_compile_definitions("IMGUI_DEFINE_MATH_OPERATORS=1")
 
 include_directories(cimgui)
 set(IMGUI_SOURCES ./cimgui/cimgui.cpp 
@@ -24,15 +25,7 @@ set(IMGUI_SOURCES ./cimgui/cimgui.cpp
 ./cimplot/implot/implot_demo.cpp
 ./cimguizmo/cimguizmo.cpp
 ./cimguizmo/ImGuizmo/ImGuizmo.cpp
-./cimnodes/cimnodes.cpp
-./cimnodes/imnodes/imnodes.cpp
 )
-
-if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/cimgui/imgui/backends)
-	set(BAKENDS_FOLDER "./cimgui/imgui/backends/")
-else()
-	set(BAKENDS_FOLDER "./cimgui/imgui/examples/")
-endif()
 
 set(IMGUI_LIBRARIES )
 
