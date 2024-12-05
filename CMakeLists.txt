@@ -58,6 +58,7 @@ add_library(cimnodes SHARED
     cimnodes/imnodes/imnodes.cpp)
 
 target_compile_definitions(cimnodes PUBLIC IMGUI_DEFINE_MATH_OPERATORS=1)
+target_compile_definitions(cimnodes PUBLIC IMNODES_NAMESPACE=imnodes)
 target_include_directories(cimnodes PUBLIC cimgui)
 target_include_directories(cimnodes PUBLIC cimgui/imgui)
 set_target_properties(cimnodes PROPERTIES PREFIX "")
