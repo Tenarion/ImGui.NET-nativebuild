@@ -16,64 +16,32 @@ if(MSVC)
   set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /DEBUG /OPT:REF /OPT:ICF")
 endif()
 
-
-add_library(cimgui SHARED 
+add_library(cimgui SHARED
     cimgui/cimgui.cpp
     cimgui/imgui/imgui.cpp
     cimgui/imgui/imgui_draw.cpp
     cimgui/imgui/imgui_demo.cpp
     cimgui/imgui/imgui_widgets.cpp
-	cimgui/imgui/imgui_tables.cpp)
-
-target_compile_definitions(cimgui PUBLIC IMGUI_DEFINE_MATH_OPERATORS=1)
-target_compile_definitions(cimgui PUBLIC IMGUI_DISABLE_OBSOLETE_FUNCTIONS=1)
-set_target_properties(cimgui PROPERTIES PREFIX "")
-
-
-add_library(cimplot SHARED
-	cimgui
-    cimgui/imgui/imgui.cpp
-    cimgui/imgui/imgui_draw.cpp
-    cimgui/imgui/imgui_demo.cpp
-    cimgui/imgui/imgui_widgets.cpp
-	cimgui/imgui/imgui_tables.cpp
+    cimgui/imgui/imgui_tables.cpp
     cimplot/cimplot.cpp
     cimplot/implot/implot.cpp
     cimplot/implot/implot_demo.cpp
-    cimplot/implot/implot_items.cpp)
-
-target_compile_definitions(cimplot PUBLIC IMGUI_DEFINE_MATH_OPERATORS=1)
-target_include_directories(cimplot PUBLIC cimgui)
-target_include_directories(cimplot PUBLIC cimgui/imgui)
-set_target_properties(cimplot PROPERTIES PREFIX "")
-
-
-add_library(cimnodes SHARED
-    cimgui/imgui/imgui.cpp
-    cimgui/imgui/imgui_draw.cpp
-    cimgui/imgui/imgui_demo.cpp
-    cimgui/imgui/imgui_widgets.cpp
-	cimgui/imgui/imgui_tables.cpp
+    cimplot/implot/implot_items.cpp
     cimnodes/cimnodes.cpp
-    cimnodes/imnodes/imnodes.cpp)
-
-target_compile_definitions(cimnodes PUBLIC IMGUI_DEFINE_MATH_OPERATORS=1)
-target_compile_definitions(cimnodes PUBLIC IMNODES_NAMESPACE=imnodes)
-target_include_directories(cimnodes PUBLIC cimgui)
-target_include_directories(cimnodes PUBLIC cimgui/imgui)
-set_target_properties(cimnodes PROPERTIES PREFIX "")
-
-
-add_library(cimguizmo SHARED
-    cimgui/imgui/imgui.cpp
-    cimgui/imgui/imgui_draw.cpp
-    cimgui/imgui/imgui_demo.cpp
-    cimgui/imgui/imgui_widgets.cpp
-	cimgui/imgui/imgui_tables.cpp
+    cimnodes/imnodes/imnodes.cpp
     cimguizmo/cimguizmo.cpp
-    cimguizmo/ImGuizmo/ImGuizmo.cpp)
+    cimguizmo/ImGuizmo/ImGuizmo.cpp
+    cimguiextra/cimgui_extra.cpp
+    cimguiextra/extra/imgui_extra.cpp
+)
 
-target_compile_definitions(cimguizmo PUBLIC IMGUI_DEFINE_MATH_OPERATORS=1)
-target_include_directories(cimguizmo PUBLIC cimgui)
-target_include_directories(cimguizmo PUBLIC cimgui/imgui)
-set_target_properties(cimguizmo PROPERTIES PREFIX "")
+target_compile_definitions(cimgui PUBLIC IMGUI_DEFINE_MATH_OPERATORS=1)
+target_compile_definitions(cimgui PUBLIC IMGUI_DISABLE_OBSOLETE_FUNCTIONS=1)
+target_compile_definitions(cimgui PUBLIC IMNODES_NAMESPACE=imnodes)
+target_include_directories(cimgui PUBLIC cimgui)
+target_include_directories(cimgui PUBLIC cimgui/imgui)
+target_include_directories(cimgui PUBLIC cimplot)
+target_include_directories(cimgui PUBLIC cimnodes)
+target_include_directories(cimgui PUBLIC cimguizmo)
+target_include_directories(cimgui PUBLIC cimguiextra)
+set_target_properties(cimgui PROPERTIES PREFIX "")
