@@ -23,16 +23,23 @@ add_library(cimgui SHARED
     cimgui/imgui/imgui_demo.cpp
     cimgui/imgui/imgui_widgets.cpp
     cimgui/imgui/imgui_tables.cpp
+
     cimplot/cimplot.cpp
     cimplot/implot/implot.cpp
     cimplot/implot/implot_demo.cpp
     cimplot/implot/implot_items.cpp
+
     cimnodes/cimnodes.cpp
     cimnodes/imnodes/imnodes.cpp
+
     cimguizmo/cimguizmo.cpp
     cimguizmo/ImGuizmo/ImGuizmo.cpp
-    cimguiextra/cimgui_extra.cpp
+
+    cimguiextra/cimgui_extra/cimgui_extra.cpp
     cimguiextra/extra/imgui_extra.cpp
+
+    cimguiextra/cimgui_knobs/cimgui_knobs.cpp
+    cimguiextra/imgui-knobs/imgui_knobs.cpp
 )
 
 target_compile_definitions(cimgui PUBLIC IMGUI_DEFINE_MATH_OPERATORS=1)
