@@ -16,35 +16,33 @@ if(MSVC)
   set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /DEBUG /OPT:REF /OPT:ICF")
 endif()
 
-add_library(cimgui SHARED
-    cimgui/cimgui.cpp
-    cimgui/imgui/imgui.cpp
-    cimgui/imgui/imgui_draw.cpp
-    cimgui/imgui/imgui_demo.cpp
-    cimgui/imgui/imgui_widgets.cpp
-    cimgui/imgui/imgui_tables.cpp
-
-    cimplot/cimplot.cpp
-    cimplot/implot/implot.cpp
-    cimplot/implot/implot_demo.cpp
-    cimplot/implot/implot_items.cpp
-
-    cimnodes/cimnodes.cpp
-    cimnodes/imnodes/imnodes.cpp
-
-    cimguizmo/cimguizmo.cpp
-    cimguizmo/ImGuizmo/ImGuizmo.cpp
-
-    cimguiextra/cimgui_extra/cimgui_extra.cpp
-    cimguiextra/extra/imgui_extra.cpp
-
-    cimguiextra/cimgui_knobs/cimgui_knobs.cpp
-    cimguiextra/imgui-knobs/imgui_knobs.cpp
+file(GLOB CIMGUI_SOURCES
+    "cimgui/*.cpp"
+    "cimgui/imgui/*.cpp"
+    "cimplot/*.cpp"
+    "cimplot/implot/*.cpp"
+    "cimnodes/*.cpp"
+    "cimnodes/imnodes/*.cpp"
+    "cimguizmo/*.cpp"
+    "cimguizmo/ImGuizmo/*.cpp"
+    "cimguiextra/cimgui_extra/*.cpp"
+    "cimguiextra/extra/*.cpp"
+    "cimguiextra/cimgui_knobs/*.cpp"
+    "cimguiextra/imgui-knobs/*.cpp"
+    "cimguiextra/cimgui_notify/*.cpp"
+    "cimguiextra/imgui_notify/*.cpp"
+    "cimguiextra/cimgui_theme/*.cpp"
+    "cimguiextra/imgui_theme/*.cpp"
 )
 
-target_compile_definitions(cimgui PUBLIC IMGUI_DEFINE_MATH_OPERATORS=1)
-target_compile_definitions(cimgui PUBLIC IMGUI_DISABLE_OBSOLETE_FUNCTIONS=1)
-target_compile_definitions(cimgui PUBLIC IMNODES_NAMESPACE=imnodes)
+add_library(cimgui SHARED ${CIMGUI_SOURCES})
+
+target_compile_definitions(cimgui 
+    PUBLIC 
+        IMGUI_DEFINE_MATH_OPERATORS=1
+	    IMNODES_NAMESPACE=imnodes
+        IMGUI_DISABLE_OBSOLETE_FUNCTIONS=1
+)
 target_include_directories(cimgui PUBLIC cimgui)
 target_include_directories(cimgui PUBLIC cimgui/imgui)
 target_include_directories(cimgui PUBLIC cimplot)
